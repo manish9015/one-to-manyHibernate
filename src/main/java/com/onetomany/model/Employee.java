@@ -56,7 +56,7 @@ public class Employee {
 		return position;
 	}
 
-	public void setPosition(String position) {
+	public void setPosition( String position) {
 		this.position = position;
 	}
 	

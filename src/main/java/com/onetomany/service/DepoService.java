@@ -1,6 +1,7 @@
 package com.onetomany.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,28 @@ public class DepoService
 		return depatmentRepo.findAll();
 	}
 	
+	public boolean deleteUser(int id)
+	{
+		if(depatmentRepo.findById(id).isPresent())
+		{
+			depatmentRepo.deleteById(id);
+			return true;
+		}
+		throw new IllegalArgumentException("No data is found on this "+id);
+	}
+	
+	public Department updateDepartment(Department department,int id)
+	{
+		Optional<Department> optionaldepartment=depatmentRepo.findById(id);
+		
+		if(optionaldepartment.isPresent())
+		{
+			Department department2=optionaldepartment.get();
+			
+			department2.setName(department.getName());
+			return depatmentRepo.save(department2);
+		}
+		throw new IllegalArgumentException("no student is found "+id);
+	}
 	
 }
