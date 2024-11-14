@@ -26,7 +26,7 @@ public class DepaContoller {
 	@PostMapping("/post")
 	public Department createDepartment(@RequestBody Department department)
 	{
-		 return depoService.save(department);
+		 return depoService.createDepartment(department);
 		
 	}
 	
